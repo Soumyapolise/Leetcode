@@ -1,1 +1,1 @@
-​
+In a 2D array, every column of every row is actually store under a single object/memory location on a heap - so when you try to update an element on column 0 of row 0, the same entry will be update on column 0 or all rows.
