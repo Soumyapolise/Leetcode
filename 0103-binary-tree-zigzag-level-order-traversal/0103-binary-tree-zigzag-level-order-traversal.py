@@ -9,7 +9,8 @@ class Solution:
         res = []
         level = 1
         self.dfs(root, res, level)
-        
+        for i in range(1, len(res), 2):
+            res[i] = res[i][::-1]
         return res
         
     
@@ -20,11 +21,8 @@ class Solution:
         if level>len(res):
             res.append([root.val])
         else:
-            # print(res, level)
-            if level%2 != 0:
-                res[level-1] += [root.val]
-            else:
-                res[level-1].insert(0, root.val)
+            res[level-1] += [root.val]
+            
         
         self.dfs(root.left, res, level+1)
         self.dfs(root.right, res, level+1)
