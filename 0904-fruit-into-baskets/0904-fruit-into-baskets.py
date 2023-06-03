@@ -5,7 +5,10 @@ class Solution:
         left = 0
         
         for right in range(len(fruits)):
-            basket[fruits[right]] = basket.get(fruits[right], 0) + 1
+            if fruits[right] in basket:
+                basket[fruits[right]] += 1
+            else:
+                basket[fruits[right]] = 1
             
             while len(basket) > 2:
                 basket[fruits[left]] -= 1
