@@ -2,9 +2,7 @@ class Solution:
     def countAndSay(self, n: int) -> str:
         if n == 1:
             return "1"
-        j = 0
-        s = "1"
-        res = ""
+        
         def calculate(i, s):
             if i == n+1:
                 return s
