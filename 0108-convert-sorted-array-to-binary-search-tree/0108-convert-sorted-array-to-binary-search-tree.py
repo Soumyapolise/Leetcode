@@ -7,11 +7,11 @@
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
         mid = len(nums)//2
-        dummy1 = dummy2 = root = TreeNode(nums[len(nums)//2]) #0
+        dummy = root = TreeNode(nums[len(nums)//2]) #0
         self.fill_Tree(0, mid-1, root, nums)
         self.fill_Tree(mid+1, len(nums)-1, root, nums)
         
-        return dummy1
+        return dummy
         
     def fill_Tree(self, i, j, root, nums): 
         if i>j:
