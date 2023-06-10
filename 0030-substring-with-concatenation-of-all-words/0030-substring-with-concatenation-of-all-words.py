@@ -7,8 +7,8 @@ class Solution:
             else:
                 d_copy[word] = 1
         
-        res = []
         n = len(words[0])
+        res = []
         for i in range(len(s)):
             d = d_copy.copy()
             start = i
