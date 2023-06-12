@@ -10,7 +10,6 @@ class Solution:
         subsets.append(current[:])  # Add the current subset to the subsets list
 
         for i in range(startIndex, len(nums)):
-            # Skip duplicates (not the first occurrence)
             if i > startIndex and nums[i] == nums[i-1]:
                 continue
 
@@ -18,7 +17,6 @@ class Solution:
             self.backtrack(i + 1, current, subsets, nums)  # Recursively call backtrack
             current.pop()  # Remove the current element (backtrack)
 
-        
         
 #         res = [[]]
 #         nums = sorted(nums)
