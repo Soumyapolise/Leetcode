@@ -10,15 +10,11 @@ class Solution:
         level = 1
         self.dfs(root, res, level)
         
-        maxi = float('-inf')
-        index = 0
+        value = max(res)
         for i in range(len(res)):
-            val = sum(res[i])
-            if val>maxi:
-                maxi = val
-                index = i
+            if res[i] == value:
+                return i+1
         
-        return index+1
         
         
         
@@ -27,9 +23,9 @@ class Solution:
             return 
         
         if level>len(res):
-            res.append([root.val])
+            res.append(root.val)
         else:
-            res[level-1].append(root.val)
+            res[level-1] += root.val
         
         self.dfs(root.left, res, level+1)
         self.dfs(root.right, res, level+1)
