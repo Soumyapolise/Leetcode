@@ -4,9 +4,10 @@ class Solution:
         
         for right in range(len(nums)):
             for left in range(0, right):
-                if (left, nums[right]-nums[left]) in d:
-                    d[(right, nums[right]-nums[left])] = d[(left, nums[right]-nums[left])] + 1
+                diff = nums[right]-nums[left]
+                if (left, diff) in d:
+                    d[(right, diff)] = d[(left, diff)] + 1
                 else:
-                    d[(right, nums[right]-nums[left])] = 2
+                    d[(right, diff)] = 2
         
         return max(d.values())
