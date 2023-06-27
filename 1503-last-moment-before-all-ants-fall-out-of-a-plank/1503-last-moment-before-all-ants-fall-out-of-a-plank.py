@@ -7,6 +7,8 @@ class Solution:
             return max(left)
         
         return max(max(left), n-min(right))
+    
+    #cries in the corner, I spent 40 minutes on this: find the code below :( buhuhuhuhu
 #         count = 0 
         
 #         while left != [] and right != []:
