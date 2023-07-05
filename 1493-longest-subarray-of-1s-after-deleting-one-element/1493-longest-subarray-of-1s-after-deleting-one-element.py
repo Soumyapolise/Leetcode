@@ -8,14 +8,10 @@ class Solution:
         for i in range(len(nums)):
             if nums[i] == 0:
                 zCount += 1
-            else:
-                zCount += 0
                 
             while zCount > 1:
                 if nums[start] == 0:
                     zCount -= 1
-                else:
-                    zCount -= 0
                     
                 start += 1
             
