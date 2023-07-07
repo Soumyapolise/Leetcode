@@ -5,13 +5,12 @@ class Solution:
         j = len(nums)-1
         count = 0
         
-        while j >= 0 and nums[j] >= k:
+        #getting rid of elements that are greater or equal to k from the right of the array
+        while j >= 0 and nums[j] >= k: 
             j -= 1 
         
-        # nums = nums[0:j+1]
         
-        while i<len(nums) and j>=0 and i<j:
-            n = len(nums)-1
+        while i<j:
             if nums[i] + nums[j] == k:
                 count += 1
                 i += 1
