@@ -4,14 +4,14 @@ class Solution:
         
         i = 1
         j = k
-        res = sums/k
+        res = sums
         while j<len(nums):
             sums -= nums[i-1]
             sums += nums[j]
             
-            res = max(res, sums/k)
+            res = max(res, sums)
             i+=1 
             j+=1
         
-        return res
+        return res/k
             
