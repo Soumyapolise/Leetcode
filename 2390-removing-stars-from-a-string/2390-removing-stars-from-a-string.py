@@ -10,4 +10,4 @@ class Solution:
                 stack.append(s[i])
             i += 1
         
-        return "".join(stack)
+        return "".join(x for x in stack)
