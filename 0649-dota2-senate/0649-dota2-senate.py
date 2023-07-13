@@ -1,24 +1,25 @@
 class Solution:
     def predictPartyVictory(self, senate: str) -> str:
-        rQueue, dQueue = deque(), deque()
+        r_Queue, d_Queue = deque(), deque()
         
         for i in range(len(senate)):
             if senate[i] == "R":
-                rQueue.append(i)
+                r_Queue.append(i)
             else:
-                dQueue.append(i)
+                d_Queue.append(i)
+        
+        while r_Queue and d_Queue:
+            r_turn = r_Queue.popleft()
+            d_turn = d_Queue.popleft()
+            
+            if r_turn < d_turn:
+                r_Queue.append(r_turn + len(senate))
+            else:
+                d_Queue.append(d_turn + len(senate))
             
         
-        while rQueue and dQueue:
-            r_turn = rQueue.popleft()
-            d_turn = dQueue.popleft()
-            
-            if d_turn < r_turn:
-                dQueue.append(d_turn + len(senate))
-            else:
-                rQueue.append(r_turn + len(senate))
-        
-        if rQueue: #there are just R's left
+        if r_Queue:
             return "Radiant"
-        else: #there are just D's left - dominating!!!!!
+        
+        if d_Queue:
             return "Dire"
