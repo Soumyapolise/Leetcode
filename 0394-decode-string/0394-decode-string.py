@@ -15,9 +15,10 @@ class Solution:
             elif ch == "]":
                 count = stack.pop()
                 prev_string = stack.pop()
+                
                 res = prev_string + count*res
             else:
                 res += ch
-            
+        
         return res
                 
