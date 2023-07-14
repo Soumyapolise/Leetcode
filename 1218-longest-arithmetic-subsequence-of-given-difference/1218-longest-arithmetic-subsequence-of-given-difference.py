@@ -3,14 +3,14 @@ class Solution:
         d = {}
         res = 0
         
-        for num in arr:
-            if num-difference in d:
-                count = d[num-difference]
+        for i in range(len(arr)):
+            if arr[i]-difference in d:
+                count = d[arr[i]-difference]
             else:
                 count = 0
+                
+            d[arr[i]] = count + 1
             
-            d[num] = count + 1
-            
-            res = max(res, d[num])
+            res = max(res, d[arr[i]])
         
         return res
