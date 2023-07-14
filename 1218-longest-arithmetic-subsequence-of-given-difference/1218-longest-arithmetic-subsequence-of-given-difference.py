@@ -8,9 +8,9 @@ class Solution:
                 count = d[arr[i]-difference]
             else:
                 count = 0
-                
+            
             d[arr[i]] = count + 1
             
-            res = max(res, d[arr[i]])
+            # res = max(res, d[arr[i]])
         
-        return res
+        return max(d.values())
