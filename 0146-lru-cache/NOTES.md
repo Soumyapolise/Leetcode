@@ -1,1 +1,1 @@
-​
+Used dictionary (for storing and accessing key-value pairs) and a queue (to keep track of least recently used key: whenever you do something with a key, remove the key from the queue, then append it again towards the back of the queue. You keep doing it, and the least recently used will be conveniently pushed towards the back and you can just popleft() )
