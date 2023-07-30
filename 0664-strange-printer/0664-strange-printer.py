@@ -1,24 +1,18 @@
 class Solution:
     def strangePrinter(self, s: str) -> int:
-        n = len(s)
-        dp = [[-1] * n for _ in range(n)]
+        cache = dict()
 
-        def solve(left, right):
-            if dp[left][right] != -1:
-                return dp[left][right]
-            
-            dp[left][right] = n
-            j = -1
-            
-            for i in range(left, right):
-                if s[i] != s[right] and j == -1:
-                    j = i
-                if j != -1:
-                    dp[left][right] = min(dp[left][right], 1 + solve(j, i) + solve(i + 1, right))
-                    
-            if j == -1:
-                dp[left][right] = 0
-    
-            return dp[left][right]
+        def solve(s):
+            if not s:
+                return 0
+            if s in cache:
+                return cache[s]
+            cost = solve(s[0:-1]) + 1
+            char_to_insert = s[-1]
+            for i, c in enumerate(s[:-1]):
+                if c == char_to_insert:
+                    cost = min(cost, solve(s[0:i + 1]) + solve(s[i + 1:-1]))
+            cache[s] = cost
+            return cost
 
-        return solve(0, n - 1) + 1
+        return solve(s)
