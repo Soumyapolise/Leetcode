@@ -7,8 +7,9 @@ class Solution:
             return res
         
         self.dfs(digits, 0, "", res, d)
-        return res
         
+        return res
+    
     def dfs(self, digits, index, string, res, d):
         if index == len(digits):
             res.append(string)
