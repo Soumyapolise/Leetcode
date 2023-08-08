@@ -4,17 +4,17 @@ class Solution:
         pivot = nums.index(min(nums))
         
         n = len(nums)
-        nums = nums[pivot:n] + nums[0:pivot]
-        print(nums)
+        # nums = nums[pivot:n] + nums[0:pivot]
         l = 0
         r = n - 1
         
         while l <= r:
             mid = l + (r-l)//2
-            if nums[mid] == target:
-                return (mid + pivot)%n
+            real_mid = (mid + pivot)%n
+            if nums[real_mid] == target:
+                return real_mid
             
-            if nums[mid] > target:
+            if nums[real_mid] > target:
                 r = mid - 1
             else:
                 l = mid + 1
