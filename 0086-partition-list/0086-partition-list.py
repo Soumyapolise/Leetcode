@@ -5,26 +5,19 @@
 #         self.next = next
 class Solution:
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
-        stack = []
         dummy = head
-        left = []
-        right = []
+        root = left = ListNode(0)
+        right = right_node = ListNode(0)
         while dummy:
             if dummy.val < x:
-                left.append(dummy.val)
+                left.next = TreeNode(dummy.val)
+                left = left.next
             else:
-                right.append(dummy.val)
-            dummy = dummy.next
-                
-        dummy = root = TreeNode(0)
-        for n in left:
-            dummy.next = TreeNode(n)
+                right.next = TreeNode(dummy.val)
+                right = right.next
             dummy = dummy.next
         
-        for n in right:
-            dummy.next = TreeNode(n)
-            dummy = dummy.next
-        
-        dummy.next = None
+        right.next = None
+        left.next = right_node.next
         
         return root.next
