@@ -9,7 +9,9 @@ class Solution:
         
         for num in den:
             for i in range(1, num):
-                res.append(str(Fraction(i, num)))
+                val = str(Fraction(i, num))
+                if val not in res:
+                    res.append(val)
         
-        return list(set(res))
+        return res
         
