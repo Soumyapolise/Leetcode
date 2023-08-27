@@ -1,5 +1,7 @@
 class Solution:
     def canCross(self, stones: List[int]) -> bool:
+        
+        #DFS but used memoization to decrease the number of computes
         def dfs(i, k, stones):
             if (k, i) in memo:
                 return memo[(k,i)]
