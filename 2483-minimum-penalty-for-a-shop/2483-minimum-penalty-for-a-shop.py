@@ -1,5 +1,7 @@
 class Solution:
     def bestClosingTime(self, customers: str) -> int:
+        #two-pass approach -> O(n)
+        
         p = 0
         
         for i in range(len(customers)):
@@ -8,6 +10,7 @@ class Solution:
                 
         p_val = p
         res = 0
+        
         for j in range(1, len(customers)+1):
             if customers[j-1] == "Y":
                 p -= 1
