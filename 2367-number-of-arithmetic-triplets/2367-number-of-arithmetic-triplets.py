@@ -9,6 +9,6 @@ class Solution:
                 d[nums[i]] = 1
                 d[nums[i] + diff] = 1
             else:
-                d[nums[i] + diff] = -1 #3:-1, 4:1, 7:1
+                d[nums[i] + diff] = -1
         
         return count
