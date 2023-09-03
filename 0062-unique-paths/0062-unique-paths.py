@@ -17,7 +17,9 @@ class Solution:
         right = self.dfs(i, j+1, memo, m, n)
         
         memo[i][j] = down + right
-        return memo[i][j]
+        return memo[i][j] #for the original i, j which is (0,0)
+    
+    ##memo is essentially to store how many ways there are to reach m-1, n-1 from i, j
 
 
 # class Solution:
@@ -37,3 +39,4 @@ class Solution:
         
 #         self.dfs(i+1, j, grid, res, m, n)
 #         self.dfs(i, j+1, grid, res, m, n)
+##ORIGINAL DFS solution, but time limit exceeded :(
