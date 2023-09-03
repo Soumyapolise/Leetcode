@@ -1,27 +1,28 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         memo = [[0 for _ in range(n)] for _ in range(m)]
-        return self.dfs(0, 0, m, n, memo)
+        return self.dfs(0, 0, memo, m, n)
     
-    def dfs(self, i, j, m, n, memo):
-        if i == m - 1 and j == n - 1:
+    def dfs(self, i, j, memo, m, n):
+        if i == m-1 and j == n-1:
             return 1
+        
         if i >= m or j >= n:
             return 0
         
         if memo[i][j] != 0:
             return memo[i][j]
         
-        right = self.dfs(i, j + 1, m, n, memo)
-        down = self.dfs(i + 1, j, m, n, memo)
+        down = self.dfs(i+1, j, memo, m, n)
+        right = self.dfs(i, j+1, memo, m, n)
         
-        memo[i][j] = right + down
+        memo[i][j] = down + right
         return memo[i][j]
 
 
 # class Solution:
 #     def uniquePaths(self, m: int, n: int) -> int:
-#         grid = [[0 for _ in range(n+1)] for _ in range(m+1)]
+#         grid = [[0 for _ in range(n)] for _ in range(m)]
 #         res = []
 #         self.dfs(0, 0, grid, res, m, n)
 #         return len(res)
