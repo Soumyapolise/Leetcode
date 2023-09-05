@@ -13,7 +13,7 @@ class Solution:
         root = node = ListNode(0)
         head1 = head
         while head:
-            node.next = d[head] = ListNode(head.val)
+            node.next = d[head] = ListNode(head.val) #just storing each node (not node's val, but the whole node information in a dictionary, so that later we can access the random pointers)
             head = head.next
             node = node.next
         
@@ -22,7 +22,6 @@ class Solution:
         node = root.next
         
         while head:
-            # if head.random not None:
             node.random = d[head.random]
             head = head.next
             node = node.next
