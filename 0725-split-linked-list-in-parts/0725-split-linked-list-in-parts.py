@@ -9,7 +9,7 @@ class Solution:
         dummy = head
         while head:
             n += 1
-            head = head.next
+            head = head.next #counting the length
         
         rem = n % p
         k = n//p
@@ -22,13 +22,13 @@ class Solution:
             
             l = len(res)
             while l < p:
-                res.append(ListNode(None).next)
+                res.append(ListNode(None).next) #adding empty lists
                 l += 1
             return res
         
         while dummy:
             if i == 0:
-                node = ListNode(dummy.val)
+                node = ListNode(dummy.val) #new list start
                 res.append(node)
                 i += 1
             elif i < k:
@@ -46,8 +46,5 @@ class Solution:
                     rem -= 1
                     dummy = dummy.next
                 i = 0
-                
-            
         
         return res
-        
