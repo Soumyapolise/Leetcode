@@ -8,11 +8,12 @@ class Solution:
         
         self.dfs(digits, 0, "", res, d)
         return res
-    
+        
     def dfs(self, digits, index, string, res, d):
         if len(string) == len(digits):
             res.append(string)
             return
         
         for ch in d[digits[index]]:
-            self.dfs(digits, index + 1, string + ch, res, d)
+            self.dfs(digits, index+1, string+ch, res, d)
+            
