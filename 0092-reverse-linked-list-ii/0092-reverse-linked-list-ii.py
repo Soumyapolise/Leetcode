@@ -8,23 +8,18 @@ class Solution:
         dummy = ListNode(0)
         dummy.next = head
         prev = dummy
-
-        # Move prev to the node just before the left position
         for _ in range(left - 1):
             prev = prev.next
 
-        # Initialize pointers for reversing the sublist
         curr = prev.next
         next_node = None
 
-        # Reverse the sublist from left to right
         for _ in range(right - left + 1):
             next_temp = curr.next
             curr.next = next_node
             next_node = curr
             curr = next_temp
 
-        # Connect the reversed sublist back to the original list
         prev.next.next = curr
         prev.next = next_node
 
