@@ -5,15 +5,16 @@ class Solution:
         
         def search(target):
             if target in dp:
-                return dp[target]
+                return dp[target] ##memoization
             
             comb_sum = 0
+            
             for num in nums:
                 if target > num:
                     comb_sum += search(target-num)
                 elif target == num:
                     comb_sum += 1
-            
+                
             dp[target] = comb_sum
             return dp[target]
         
