@@ -3,7 +3,7 @@ class Solution:
         def backtrack(curr):
             if sum(curr) == target:
                 if sorted(curr) not in res:
-                    res.append(sorted(curr))
+                    res.append(sorted(curr)[:])
                 return
             elif sum(curr) > target:
                 return
