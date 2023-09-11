@@ -3,10 +3,10 @@ class Solution:
         d = {}
         res = []
         for i in range(len(groupSizes)):
-            if groupSizes[i] in d:
-                d[groupSizes[i]] += [i]
-            else:
-                d[groupSizes[i]] = [i]
+            if groupSizes[i] not in d:
+                d[groupSizes[i]] = []
+                
+            d[groupSizes[i]] += [i]
             
             if len(d[groupSizes[i]]) == groupSizes[i]:
                 res.append(d[groupSizes[i]])
