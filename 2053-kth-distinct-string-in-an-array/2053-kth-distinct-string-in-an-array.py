@@ -1,7 +1,7 @@
 class Solution:
     def kthDistinct(self, arr: List[str], k: int) -> str:
         d = {}
-        lis = []
+        
         for ch in arr:
             if ch not in d:
                 d[ch] = 0
