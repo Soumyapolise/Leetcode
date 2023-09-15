@@ -11,12 +11,13 @@ class Solution:
         
         val = preorder.pop(0)
         root = TreeNode(val)
-        
         idx = inorder.index(val)
-        left_inorder = inorder[0:idx]
-        right_inorder = inorder[idx+1:]
         
-        root.left = self.buildTree(preorder, left_inorder)
-        root.right = self.buildTree(preorder, right_inorder)
+        leftInorder = inorder[0:idx]
+        rightInorder = inorder[idx+1:]
+        
+        root.left = self.buildTree(preorder, leftInorder)
+        root.right = self.buildTree(preorder, rightInorder)
         
         return root
+        
