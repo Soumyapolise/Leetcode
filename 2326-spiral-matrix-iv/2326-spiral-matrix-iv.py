@@ -11,7 +11,7 @@ class Solution:
         while head:
             arr.append(head.val)
             head = head.next
-        
+        t = len(arr)
         top, bottom, left, right = 0, m-1, 0, n-1
         direction = 0 #0 = right, 1 = down, 2 = left, 3 = up
         
@@ -19,25 +19,25 @@ class Solution:
         while top <= bottom and left <= right:
             if direction == 0:
                 for i in range(left, right+1):
-                    if index < len(arr):
+                    if index < t:
                         res[top][i] = arr[index]
                     index += 1
                 top += 1
             if direction == 1:
                 for i in range(top, bottom+1):
-                    if index < len(arr):
+                    if index < t:
                         res[i][right] = arr[index]
                     index += 1
                 right -= 1
             if direction == 2:
                 for i in range(right, left-1, -1):
-                    if index < len(arr):
+                    if index < t:
                         res[bottom][i] = arr[index]
                     index += 1
                 bottom -= 1
             if direction == 3:
                 for i in range(bottom, top-1, -1):
-                    if index < len(arr):
+                    if index < t:
                         res[i][left] = arr[index]
                     index += 1
                 left += 1
