@@ -11,8 +11,8 @@ class Solution:
         
         val = preorder.pop(0)
         root = TreeNode(val)
-        idx = inorder.index(val)
         
+        idx = inorder.index(val)
         leftInorder = inorder[0:idx]
         rightInorder = inorder[idx+1:]
         
@@ -20,4 +20,5 @@ class Solution:
         root.right = self.buildTree(preorder, rightInorder)
         
         return root
+        
         
