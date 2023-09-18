@@ -22,15 +22,13 @@ class Codec:
         q.append(root)
         while q:
             node = q.popleft()
-            if not node:
-                res += "null#" 
-            else:
+            if node:
                 res += str(node.val) + "#"
-                if node:
-                    q.append(node.left)
-                    q.append(node.right)
-            
-        
+                q.append(node.left)
+                q.append(node.right)
+            else:
+                res += "null#"
+          
         return res
             
 
