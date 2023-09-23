@@ -1,25 +1,18 @@
 class Solution:
     def longestStrChain(self, words: List[str]) -> int:
-        words.sort(key=len)
-    
-        # Create a dictionary to store the longest chain length for each word
-        dp = {}
-
-        # Initialize the result to 1 (minimum chain length for any word)
-        result = 1
-
-        # Iterate through each word in the sorted order
+        words.sort(key=len) #sorting the words by their length
+        
+        res = 1
+        d = {}
+        
         for word in words:
-            # Initialize the longest chain length for this word to 1
-            dp[word] = 1
-
-            # Try to remove each character from the word to find predecessors
+            d[word] = 1 #updating by minimum occurrence
+            
             for i in range(len(word)):
-                predecessor = word[:i] + word[i+1:]
-                if predecessor in dp:
-                    dp[word] = max(dp[word], dp[predecessor] + 1)
-
-            # Update the overall result if needed
-            result = max(result, dp[word])
-
-        return result
+                p = word[:i] + word[i+1:] #checking without the i'th letter for predecessor -> if it's in d
+                if p in d: #if predecessor already in d, update d[word] with whatever is max as done below:
+                    d[word] = max(d[word], d[p] + 1)
+            
+            res = max(res, d[word]) #just updating res as we go for max value
+        
+        return res
