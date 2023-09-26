@@ -1,27 +1,19 @@
 class Solution:
     def removeDuplicateLetters(self, s: str) -> str:
+        d = {}
+        
+        for i in range(len(s)):
+            d[s[i]] = i #storing the last occurrences of every letter in s
+            
         stack = []
-    
-        last_occurrence = {char: i for i, char in enumerate(s)}
-
         seen = set()
-
-        for i, char in enumerate(s):
-            if char not in seen:
-                while stack and char < stack[-1] and i < last_occurrence[stack[-1]]:
-                    seen.discard(stack.pop())
-                stack.append(char)
-                seen.add(char)
-
-        return ''.join(stack)
-
-# 		for i in range(len(s)):
-
-# 			if s[i] not in visited:
-# 				while (stack and stack[-1] > s[i] and last_occ[stack[-1]] > i):
-# 					visited.remove(stack.pop())
-
-# 				stack.append(s[i])
-# 				visited.add(s[i])
-
-# 		return ''.join(stack)
+        
+        for i in range(len(s)):
+            if s[i] not in seen:
+                while stack and s[i] < stack[-1] and i < d[stack[-1]]: #making sure it is not the last occurrence of the letter
+                    seen.remove(stack.pop()) #if the new letter is smaller and not the last occurrence in the string s, remove it from stack, cuz we need the smallest in the lexicographical order
+                stack.append(s[i]) #in turn add the smallest here.
+                seen.add(s[i])
+            
+        return "".join(stack)
+                    
