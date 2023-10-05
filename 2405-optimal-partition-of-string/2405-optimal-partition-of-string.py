@@ -1,14 +1,14 @@
 class Solution:
     def partitionString(self, s: str) -> int:
-        res = []
+        count = 0
         substring = ""
         for ch in s:
             if ch in substring:
-                res.append(substring)
+                count += 1
                 substring = ""
             substring += ch
         
         if substring != "":
-            res.append(substring)
+            count += 1
             
-        return len(res)
+        return count
