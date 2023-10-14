@@ -6,7 +6,7 @@ class Solution:
             if word[:-1] in valid:
                 valid.add(word)
 		
-        return max(sorted(valid), key=lambda x: len(x))
+        return max(sorted(valid), key=lambda x: len(x)) ##return the max by length of word, not max lexicographically:
             
         
 #         words.sort(reverse = True)
