@@ -2,7 +2,7 @@ class Solution:
     def longestWord(self, words: List[str]) -> str:
         valid = set([""])
        
-        for word in sorted(words, key=lambda x: len(x)):
+        for word in sorted(words):
             if word[:-1] in valid:
                 valid.add(word)
 		
