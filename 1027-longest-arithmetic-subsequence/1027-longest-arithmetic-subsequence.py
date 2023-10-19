@@ -2,9 +2,10 @@ class Solution:
     def longestArithSeqLength(self, nums: List[int]) -> int:
         d = {}
         
-        for right in range(len(nums)):
-            for left in range(0, right):
-                diff = nums[right]-nums[left]
+        for right in range(1, len(nums)):
+            for left in range(right):
+                diff = nums[right] - nums[left]
+                
                 if (left, diff) in d:
                     d[(right, diff)] = d[(left, diff)] + 1
                 else:
