@@ -6,13 +6,13 @@
 #         self.right = right
 class Solution:
     def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
-        if root is None:
+        if not root:
             return TreeNode(val)
         
         dummy = root
         
         def searchPosition(root, val):
-            if root is None:
+            if not root:
                 return
             
             if val < root.val:
@@ -28,4 +28,6 @@ class Solution:
                     root.right = TreeNode(val)
                     return dummy
             
+            return root
+        
         return searchPosition(root, val)
