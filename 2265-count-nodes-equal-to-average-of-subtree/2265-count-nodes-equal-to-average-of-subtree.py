@@ -20,7 +20,7 @@ class Solution:
             s = root.val + left_sum + right_sum
             c = 1 + left_count + right_count
             
-            if root.val == s // c:
+            if s // c == root.val:
                 res += 1
             
             return s, c
@@ -28,4 +28,3 @@ class Solution:
         traverse(root)
         
         return res
-    
