@@ -8,23 +8,23 @@ class Solution:
     def averageOfSubtree(self, root: Optional[TreeNode]) -> int:
         res = 0
         
-        def traverse(root):
+        def dfs(root):
             nonlocal res
             
             if not root:
                 return 0, 0
             
-            left_sum, left_count = traverse(root.left)
-            right_sum, right_count = traverse(root.right)
+            left_sum, left_count = dfs(root.left)
+            right_sum, right_count = dfs(root.right)
             
             s = root.val + left_sum + right_sum
             c = 1 + left_count + right_count
             
-            if s // c == root.val:
+            if s//c == root.val:
                 res += 1
             
             return s, c
         
-        traverse(root)
+        dfs(root)
         
         return res
