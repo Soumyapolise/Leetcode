@@ -13,7 +13,7 @@ class Solution:
                 while val in d:
                     val = name + "(" + str(d[name] + k) + ")"
                     k += 1
-                d[name] += 1
+                d[name] = k
                 d[val] = 1
                 res.append(val)
         
