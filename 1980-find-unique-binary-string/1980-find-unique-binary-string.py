@@ -13,9 +13,10 @@ class Solution:
                 return True
             
             if dfs(ch + "1"):
-                return False
+                return True
         
         dfs("")
+        print(res)
         return res[0]
             
             
