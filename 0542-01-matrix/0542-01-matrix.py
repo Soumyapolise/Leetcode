@@ -1,34 +1,26 @@
-from collections import deque
 class Solution:
     def updateMatrix(self, mat):
-        m, n = len(mat), len(mat[0])
-        directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-        queue = deque()
+        m = len(mat)
+        n = len(mat[0])
+        res = [[float('inf') if mat[i][j] == 1 else 0 for j in range(n)] for i in range(m)]
 
-        # Enqueue all cells with value 0 and mark them as visited
+        # Top-left to bottom-right pass
         for i in range(m):
             for j in range(n):
-                if mat[i][j] == 0:
-                    queue.append((i, j))
-                else:
-                    mat[i][j] = -1  # Mark non-zero cells as visited
+                if i > 0:
+                    res[i][j] = min(res[i][j], res[i-1][j] + 1)
+                if j > 0:
+                    res[i][j] = min(res[i][j], res[i][j-1] + 1)
 
-        distance = 1
-        while queue:
-            size = len(queue)
-            for _ in range(size):
-                row, col = queue.popleft()
+        # Bottom-right to top-left pass
+        for i in range(m - 1, -1, -1):
+            for j in range(n - 1, -1, -1):
+                if i < m - 1:
+                    res[i][j] = min(res[i][j], res[i+1][j] + 1)
+                if j < n - 1:
+                    res[i][j] = min(res[i][j], res[i][j+1] + 1)
 
-                for dr, dc in directions:
-                    newRow, newCol = row + dr, col + dc
-                    if 0 <= newRow < m and 0 <= newCol < n and mat[newRow][newCol] == -1:
-                        mat[newRow][newCol] = distance
-                        queue.append((newRow, newCol))
-
-            distance += 1
-
-        return mat
-
+        return res
 
 
 # class Solution:
@@ -62,4 +54,4 @@ class Solution:
 #         self.dfs(mat, i, j+1, dist, count+1)
 #         self.dfs(mat, i, j-1, dist, count+1)
         
-#         mat[i][j] = -1
+#         mat[i][j] = original_value
