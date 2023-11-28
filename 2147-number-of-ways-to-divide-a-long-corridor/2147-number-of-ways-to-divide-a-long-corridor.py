@@ -14,7 +14,7 @@ class Solution:
             return 1
         res = 1
         
-        for i in range(1, len(d["S"])-1, 2):
+        for i in range(1, len(d["S"])-1, 2): #just calculating how many ever plants are there between every two - two plants, if k plants, k+1 ways to place a divider - so keep multiplying until end of the indices in d["S"], cuz we are asked for number of ways, so multiply over total array
             res *= (d["S"][i+1] - d["S"][i])%MOD
             res %= MOD
         return res%MOD
