@@ -1,7 +1,5 @@
 class Solution:
     def cherryPickup(self, grid: List[List[int]]) -> int:
-        res = []
-        sums = 0
         dirs = [[1, -1], [1, 0], [1, 1]]
         memo = {}
     
