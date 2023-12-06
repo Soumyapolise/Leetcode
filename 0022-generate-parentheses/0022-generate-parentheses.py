@@ -3,7 +3,7 @@ class Solution:
         l = n*2
         
         string = "("
-        o = 1
+        o = 1 #unpaired brackets
         res = []
         
         def dfs(string, o, res):
