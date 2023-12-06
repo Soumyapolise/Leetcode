@@ -1,21 +1,22 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        left = 0
-        right = 0
-        s = ""
+        l = n*2
+        
+        string = "("
+        o = 1
         res = []
         
-        def dfs(left, right, s):
-            if len(s) == n*2:
-                res.append(s)
+        def dfs(string, o, res):
+            if o > n or o < 0 or len(string) > l:
                 return
             
-            if left < n:
-                dfs(left + 1, right, s + "(")
+            if len(string) == l:
+                if o == 0:
+                    res.append(string)
+                return
             
-            if right < left:
-                dfs(left, right + 1, s + ")")
-        
-        dfs(left, right, s)
-        
+            dfs(string + "(", o + 1, res)
+            dfs(string + ")", o - 1, res)
+            
+        dfs(string, o, res)
         return res
