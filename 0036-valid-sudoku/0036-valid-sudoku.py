@@ -4,13 +4,13 @@ class Solution:
         
         for i in range(len(board)):
             for j in range(len(board[0])):
-                element = board[i][j]
-                if element != ".":
-                    if (i, element) in d or (element, j) in d or (element, i//3, j//3) in d:
+                if board[i][j] != ".":
+                    if (i, board[i][j]) in d or (board[i][j], j) in d or (i//3, j//3, board[i][j]) in d:
                         return False
-                    d[(i, element)] = 1
-                    d[(element, j)] = 1
-                    d[(element, i//3, j//3)] = 1
+                    
+                    d[(i, board[i][j])] = 1
+                    d[(board[i][j], j)] = 1
+                    d[(i//3, j//3, board[i][j])] = 1
         
         return True
 
