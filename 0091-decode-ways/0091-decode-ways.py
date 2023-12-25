@@ -14,7 +14,7 @@ class Solution:
             
             ways = recursive_decode(idx + 1)
             
-            if idx + 1 < len(s) and int(s[idx:idx+2]) <= 26:
+            if idx + 1 < len(s) and int(s[idx:idx+2]) <= 26: #for two digit numbers
                 ways += recursive_decode(idx + 2)
             
             memo[idx] = ways
