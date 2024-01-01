@@ -19,7 +19,6 @@ class Solution:
             else:
                 prev = ch
             
-            
             #traversing through "prev" char to update values in dictionary
             for i in range(len(prev)-1):
                 string = prev[i:]
@@ -30,10 +29,6 @@ class Solution:
                     if d[string] >= 3:
                         count = max(count, len(string))
         
-        # res = 0
-        # for key, val in d.items():
-        #     if val >= 3: #occurring atleast three times
-        #         res = max(res, len(key))
         
         if count == 0: #did not find anything supporting our clause
             return -1
