@@ -7,31 +7,33 @@ class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         if not lists:
             return None
+        
         if len(lists) == 1:
-            return lists[0]
+            return lists[-1]
         
         mid = len(lists)//2
-        l = self.mergeKLists(lists[0:mid:])
-        r = self.mergeKLists(lists[mid::])
+        l = self.mergeKLists(lists[0:mid])
+        r = self.mergeKLists(lists[mid:])
         return self.mergeList(l, r)
-            
-        
-    def mergeList(self, l:ListNode, r:ListNode):
-        dummy = ListNode(0)
-        head = dummy
+    
+    def mergeList(self, l, r):
+        dummy = node = ListNode(0)
         while l and r:
-            if l.val<r.val:
-                dummy.next = l
+            if l.val < r.val:
+                node.next = ListNode(l.val)
                 l = l.next
             else:
-                dummy.next = r
+                node.next = ListNode(r.val)
                 r = r.next
-            dummy = dummy.next
+            node = node.next
+        
         if l:
-            dummy.next = l
+            node.next = l
+        
         if r:
-            dummy.next = r
-        return head.next
+            node.next = r
+        
+        return dummy.next
         
     
     
