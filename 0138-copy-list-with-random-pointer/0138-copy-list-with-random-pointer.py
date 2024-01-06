@@ -9,24 +9,24 @@ class Node:
 
 class Solution:
     def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
-        d = {None:None}
-        root = node = ListNode(0)
-        head1 = head
+        d = {}
+        dummy = node = Node(0)
+        dummy2 = head
         while head:
-            node.next = d[head] = ListNode(head.val) #just storing each node (not node's val, but the whole node information in a dictionary, so that later we can access the random pointers)
+            node.next = Node(head.val)
+            d[head] = node.next
             head = head.next
             node = node.next
         
-        node.next = None
-        head = head1
-        node = root.next
+        head = dummy2
+        node = dummy.next
         
         while head:
-            node.random = d[head.random]
-            head = head.next
+            if head.random:
+                node.random = d[head.random]
+            else:
+                node.random = None
             node = node.next
+            head = head.next
         
-        return root.next
-        
-        
-        
+        return dummy.next
