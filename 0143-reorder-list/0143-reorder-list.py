@@ -25,17 +25,16 @@ class Solution:
             node = k
         
         slow.next = None
-        # print(head, prev)
         while prev:
             next_node = head.next
             head.next = prev
-            try:
-                if prev.next:
-                    rev_next_node = prev.next
-                else:
-                    rev_next_node = None
-            except:
+            # try:
+            if prev.next:
+                rev_next_node = prev.next
+            else:
                 rev_next_node = None
+            # except:
+            #     rev_next_node = None
             prev.next = next_node
             head = next_node
             prev = rev_next_node
