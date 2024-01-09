@@ -37,7 +37,6 @@ class Codec:
         :rtype: TreeNode
         """
         data = data.split(" ")
-        print(data)
         if data == ['None']:
             return None
         res = []
