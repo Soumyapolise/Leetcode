@@ -13,52 +13,61 @@ class Codec:
         :type root: TreeNode
         :rtype: str
         """
-        if root is None:
-            return ""
+        res = []
         
-        res = ""
+        stack = [root]
         
-        q = deque()
-        q.append(root)
-        while q:
-            node = q.popleft()
-            if node:
-                res += str(node.val) + "#"
-                q.append(node.left)
-                q.append(node.right)
-            else:
-                res += "null#"
-          
-        return res
+        while stack:
+            node = stack.pop(0)
+            if node is None:
+                res.append("None")
+                continue
             
-
+            res.append(node.val)
+            
+            stack.append(node.left)
+            stack.append(node.right)
+        
+        return " ".join(str(x) for x in res)
+        
     def deserialize(self, data):
         """Decodes your encoded data to tree.
         
         :type data: str
         :rtype: TreeNode
         """
-        if data == "":
+        data = data.split(" ")
+        print(data)
+        if data == ['None']:
             return None
+        res = []
+        for x in data:
+            if x != "None":
+                res.append(int(x))
+            else:
+                res.append(x)
         
-        data = data.split("#")
-        data = data[:-1]
+        root = TreeNode(res.pop(0))
         
-        root = node = TreeNode(data.pop(0))
-        q = deque()
-        q.append(node)
-        i = 0
-        while q:
-            key = q.popleft()
-            if i < len(data):
-                key.left = TreeNode(data[i])
-                i += 1
-                q.append(key.left)
+        stack = [root]
+        while stack:
+            node = stack.pop(0)
+            if not node:
+                continue
+            l = res.pop(0)
+            if l == "None":
+                node.left = None
+            else:
+                node.left = TreeNode(l)
+                
+            r = res.pop(0)
+            if r == "None":
+                node.right = None
+            else:
+                node.right = TreeNode(r)
             
-            if i < len(data):
-                key.right = TreeNode(data[i])
-                i += 1
-                q.append(key.right)
+            stack.append(node.left)
+            stack.append(node.right)
         
         return root
         
