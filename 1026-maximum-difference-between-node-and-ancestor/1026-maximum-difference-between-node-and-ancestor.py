@@ -7,21 +7,19 @@
 class Solution:
     def maxAncestorDiff(self, root: Optional[TreeNode]) -> int:
         res = 0
-        queue = deque()
-        queue.append([root, root.val, root.val])
         
-        while queue:
-            curr, high, low = queue.popleft()
+        q = deque()
+        q.append([root, root.val, root.val])
+        
+        while q:
+            curr, high, low = q.popleft()
             
-            diff1 = high - curr.val
-            diff2 = curr.val - low
-            
-            res = max(res, diff1, diff2)
+            res = max(res, high - curr.val, curr.val - low)
             
             if curr.left:
-                queue.append([curr.left, max(curr.val, high), min(curr.val, low)])
+                q.append([curr.left, max(high, curr.val), min(low, curr.val)])
             
             if curr.right:
-                queue.append([curr.right, max(curr.val, high), min(curr.val, low)])
+                q.append([curr.right, max(high, curr.val), min(low, curr.val)])
         
         return res
