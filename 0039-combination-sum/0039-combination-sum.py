@@ -1,19 +1,20 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates.sort()
         res = []
+        self.dfs([], target, res, candidates)
         
-        def dfs(val, path, candidates):
-            if val == target:
-                res.append(path)
-                return
-            elif val > target:
-                return
-            
-            for i in range(len(candidates)):
-                dfs(val + candidates[i], path + [candidates[i]], candidates[i:])
-            
+        return res
+    
+    def dfs(self, arr, target, res, candidates):
+        if sum(arr) > target:
+            return
         
-        dfs(0, [], candidates)
+        if sum(arr) == target:
+            res.append(arr)
+            return
         
-        return list(res)
+        for j in range(len(candidates)):
+            self.dfs(arr + [candidates[j]], target, res, candidates[j:])
+    
         
