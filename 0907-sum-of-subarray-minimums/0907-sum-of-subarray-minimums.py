@@ -10,9 +10,9 @@ class Solution:
         for i in range(n):
             while stack and arr[stack[-1]] > arr[i]:
                 stack.pop()
-            left[i] = stack[-1] if stack else -1
+            if stack:
+                left[i] = stack[-1] 
             stack.append(i)
-
         # Clear the stack for finding nearest smaller element on the right
         stack = []
 
@@ -20,9 +20,9 @@ class Solution:
         for i in range(n - 1, -1, -1):
             while stack and arr[stack[-1]] >= arr[i]:
                 stack.pop()
-            right[i] = stack[-1] if stack else n
+            if stack:
+                right[i] = stack[-1]
             stack.append(i)
-
         # Calculate the sum of min(b) for all subarrays
         result = 0
         for i in range(n):
