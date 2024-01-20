@@ -1,19 +1,20 @@
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
-        res = []
         if digits == "":
-            return res
+            return []
         
         d = {"2":"abc", "3":"def", "4":"ghi", "5":"jkl", "6":"mno", "7":"pqrs", "8":"tuv", "9":"wxyz"}
         
-        self.dfs(digits, 0, "", res, d)
+        res = []
+        self.dfs(digits, 0, d, res, "")
         return res
         
-    def dfs(self, digits, index, string, res, d):
-        if len(string) == len(digits):
-            res.append(string)
+    def dfs(self, digits, i, d, res, ch):
+        if len(ch) == len(digits):
+            res.append(ch)
             return
         
-        for ch in d[digits[index]]:
-            self.dfs(digits, index+1, string+ch, res, d)
-            
+        for x in d[digits[i]]:
+            self.dfs(digits, i+1, d, res, ch+x)
+        
+        
