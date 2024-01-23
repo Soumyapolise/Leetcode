@@ -1,24 +1,20 @@
 class Solution:
     def maxLength(self, arr: List[str]) -> int:
-        #res = []
+        length = 0
+        
         def backtrack(arr, i, curr):
-            nonlocal l
+            nonlocal length
             
-            l = max(l, len("".join(curr)))
+            length = max(length, len("".join(curr))) #max_length = 6
             
             for j in range(i, len(arr)):
                 val = "".join(curr)
+                
                 if len(val) + len(arr[j]) == len(set(val + arr[j])):
-                    curr.append(arr[j])
-                    # res.append(curr[:])
-                    
-                    backtrack(arr, j+1, curr)
+                    curr.append(arr[j]) ##
+                    backtrack(arr, j + 1, curr)
                     curr.pop()
-        l = 0            
-        backtrack(arr, 0, [])
-#         print(res)
         
-#         for x in res:
-#             l = max(l, len("".join(x)))
-            
-        return l
+        backtrack(arr, 0, [])
+        
+        return length
