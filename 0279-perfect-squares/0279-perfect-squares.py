@@ -8,6 +8,8 @@ class Solution:
             if n == 0:
                 return 0
             
+            if n < 0:
+                return float('inf')
             if n in memo:
                 return memo[n]
             
