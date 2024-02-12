@@ -1,14 +1,19 @@
 class Solution:
     def cherryPickup(self, grid: List[List[int]]) -> int:
-        dirs = [[1, -1], [1, 0], [1, 1]]
+        m = len(grid)
+        n = len(grid[0])
+        dirs = [[1,-1], [1,0], [1,1]]
         memo = {}
-    
+        
         def dfs(i, j, x, y, grid, dirs, memo):
-            if i < 0 or i >= len(grid) or x < 0 or x >= len(grid) or j < 0 or j >= len(grid[0]) or y < 0 or y >= len(grid[0]):
-                return 0
+            nonlocal m
+            nonlocal n
             
             if (i, j, x, y) in memo:
                 return memo[(i, j, x, y)]
+            
+            if i < 0 or j < 0 or i >= m or j >= n or x < 0 or y < 0 or x >= m or y >= n:
+                return 0
             
             if (i, j) != (x, y):
                 sums = grid[i][j] + grid[x][y]
@@ -18,10 +23,10 @@ class Solution:
             max_cherries = 0
             for di, dj in dirs:
                 for dx, dy in dirs:
-                    max_cherries = max(max_cherries, dfs(i + di, j + dj, x + dx, y + dy, grid, dirs, memo))
+                    max_cherries = max(max_cherries, dfs(i+di, j+dj, x+dx, y+dy, grid, dirs, memo))
             
             memo[(i, j, x, y)] = sums + max_cherries
             return memo[(i, j, x, y)]
             
-        return dfs(0, 0, 0, len(grid[0])-1, grid, dirs, memo)
+        return dfs(0, 0, 0, n-1, grid, dirs, memo)
         
