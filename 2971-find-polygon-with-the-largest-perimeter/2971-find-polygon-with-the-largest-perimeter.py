@@ -1,7 +1,7 @@
 class Solution:
     def largestPerimeter(self, nums: List[int]) -> int:
         nums.sort()
-        print(nums)
+        
         sums = sum(nums)
         sums -= nums[-1]
         i = 1
