@@ -15,7 +15,6 @@ class Solution:
         if len(arr) == 1:
             return ListNode(arr[0]) if arr[0] != 0 else None
         while i < len(arr)-1:
-            print(i)
             sums = arr[i]
             j = i+1
             while j < len(arr) and sums != 0:
@@ -23,9 +22,7 @@ class Solution:
                 j += 1
             
             if sums == 0:
-                #print("hi", i ,j)
                 arr = arr[0:i] + arr[j:]
-                print(arr)
                 i = 0
             else:
                 i += 1
